@@ -64,8 +64,8 @@ resource "aws_iam_role_policy_attachment" "bastion_iam_ssm_policy" {
 data "aws_ami" "rhel9" {
   count = var.private ? 1 : 0
 
-  executable_users = ["self"]
-  owners           = ["309956199498"]
+  # executable_users = ["self"]
+  owners           = ["309956199498", "219670896067"]
   most_recent      = true
 
   filter {

@@ -165,3 +165,27 @@ variable "compute_machine_type" {
   type        = string
   default     = "m5.xlarge"
 }
+
+variable "ocm_api" {
+  description = <<EOF
+  The OCM API URL to use.
+  EOF
+  type        = string
+  default     = "https://api.openshift.com"
+}
+
+variable "ocm_token_url" {
+  description = <<EOF
+  The OCM Token URL to use.
+  EOF
+  type        = string
+  default     = "https://sso.redhat.com/realms/redhat-external/protocol/openid-connect/token"
+}
+
+variable "ocm_client_id" {
+  description = <<EOF
+  The Client ID to use for OCM authentication.
+  EOF
+  type        = string
+  default     = "cloud-services"
+}
