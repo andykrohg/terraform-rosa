@@ -22,7 +22,7 @@ provider "rhcs" {
   url   = var.ocm_api
   token_url = var.ocm_token_url
   client_id = var.ocm_client_id
-  client_secret = ""
+  client_secret = var.ocm_client_secret
 }
 
 provider "aws" {

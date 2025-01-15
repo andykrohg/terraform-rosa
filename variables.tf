@@ -168,7 +168,7 @@ variable "compute_machine_type" {
 
 variable "ocm_api" {
   description = <<EOF
-  The OCM API URL to use.
+  The OCM API URL to use. Use 'https://api.openshiftusgov.com' for GovCloud installations.
   EOF
   type        = string
   default     = "https://api.openshift.com"
@@ -176,7 +176,7 @@ variable "ocm_api" {
 
 variable "ocm_token_url" {
   description = <<EOF
-  The OCM Token URL to use.
+  The OCM Token URL to use. Use 'https://sso.openshiftusgov.com/realms/redhat-external/protocol/openid-connect/token' for GovCloud installations.
   EOF
   type        = string
   default     = "https://sso.redhat.com/realms/redhat-external/protocol/openid-connect/token"
@@ -184,8 +184,16 @@ variable "ocm_token_url" {
 
 variable "ocm_client_id" {
   description = <<EOF
-  The Client ID to use for OCM authentication.
+  The Client ID to use for OCM authentication. Use 'console-dot' for GovCloud installations.
   EOF
   type        = string
   default     = "cloud-services"
+}
+
+variable "ocm_client_secret" {
+  description = <<EOF
+  The Client Secret to use for OCM authentication.
+  EOF
+  type        = string
+  default     = ""
 }
