@@ -2,6 +2,8 @@ data "aws_caller_identity" "current" {}
 
 data "aws_region" "current" {}
 
+data "aws_partition" "current" {}
+
 data "rhcs_versions" "classic_versions" {
   search = "enabled='t' and rosa_enabled='t' and channel_group='stable'"
   order  = "id"

@@ -58,7 +58,7 @@ EOF
 resource "aws_iam_role_policy_attachment" "bastion_iam_ssm_policy" {
   count      = var.private ? 1 : 0
   role       = aws_iam_role.bastion_iam_role[0].name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  policy_arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 data "aws_ami" "rhel9" {
