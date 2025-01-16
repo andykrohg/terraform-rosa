@@ -89,7 +89,7 @@ resource "rhcs_cluster_rosa_classic" "rosa" {
   properties = { rosa_creator_arn = data.aws_caller_identity.current.arn }
   version    = local.classic_version
   sts        = local.sts_roles
-  fips       = var.fips
+  fips       = var.govcloud || var.fips
 
   disable_waiting_in_destroy = false
   wait_for_create_complete   = true
