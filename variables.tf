@@ -174,14 +174,6 @@ variable "govcloud" {
   default     = false
 }
 
-variable "ocm_client_secret" {
-  description = <<EOF
-  The Client Secret to use for OCM authentication.
-  EOF
-  type        = string
-  default     = ""
-}
-
 variable "fips" {
   description = <<EOF
   Create cluster that uses FIPS Validated / Modules in Process cryptographic libraries.

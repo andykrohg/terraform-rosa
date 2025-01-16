@@ -20,10 +20,9 @@ terraform {
 provider "rhcs" {
   token = var.token
   url   = var.govcloud ? "https://api.openshiftusgov.com" : "https://api.openshift.com"
-  token_url = var.govcloud ? "https://sso.openshiftusgov.com/realms/redhat-external/protocol/openid-connect/token" :
-    "https://sso.redhat.com/realms/redhat-external/protocol/openid-connect/token"
+  token_url = var.govcloud ? "https://sso.openshiftusgov.com/realms/redhat-external/protocol/openid-connect/token" : "https://sso.redhat.com/realms/redhat-external/protocol/openid-connect/token"
   client_id = var.govcloud ? "console-dot" : "cloud-services"
-  client_secret = var.ocm_client_secret
+  client_secret = ""
 }
 
 provider "aws" {
