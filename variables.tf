@@ -197,3 +197,12 @@ variable "ocm_client_secret" {
   type        = string
   default     = ""
 }
+
+variable "fips" {
+  description = <<EOF
+  Create cluster that uses FIPS Validated / Modules in Process cryptographic libraries.
+  After the creation of the resource, it is not possible to update the attribute value.
+  EOF
+  type        = bool
+  default     = false
+}
