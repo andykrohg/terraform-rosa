@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     rhcs = {
-      version = ">= 1.6.7"
-      source  = "terraform-redhat/rhcs"
+      version = "= 1.6.8"
+      source  = "terraform.local/local/rhcs"
     }
 
     aws = {

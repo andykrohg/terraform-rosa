@@ -6,7 +6,7 @@
 module "account_roles_classic" {
   count = var.hosted_control_plane ? 0 : 1
 
-  source  = "git::https://github.com/andykrohg/terraform-rhcs-rosa-classic//modules/account-iam-resources?ref=main"
+  source  = "../terraform-rhcs-rosa-classic/modules/account-iam-resources"
   # version = "1.6.4"
 
   account_role_prefix = var.cluster_name
@@ -18,10 +18,11 @@ module "account_roles_classic" {
 module "account_roles_hcp" {
   count = var.hosted_control_plane ? 1 : 0
 
-  source  = "terraform-redhat/rosa-hcp/rhcs//modules/account-iam-resources"
-  version = "1.6.4"
+  source  = "../terraform-rhcs-rosa-classic/modules/account-iam-resources"
+  # version = "1.6.4"
 
   account_role_prefix = var.cluster_name
+  openshift_version   = local.classic_version
   tags                = var.tags
 }
 
@@ -33,8 +34,8 @@ module "account_roles_hcp" {
 module "oidc_config_and_provider_classic" {
   count = var.hosted_control_plane ? 0 : 1
 
-  source  = "terraform-redhat/rosa-classic/rhcs//modules/oidc-config-and-provider"
-  version = "1.6.4"
+  source  = "../terraform-rhcs-rosa-classic/modules/oidc-config-and-provider"
+  # version = "1.6.4"
 
   managed = true
   tags    = var.tags
@@ -43,7 +44,7 @@ module "oidc_config_and_provider_classic" {
 module "operator_policies_classic" {
   count = var.hosted_control_plane ? 0 : 1
 
-  source  = "git::https://github.com/andykrohg/terraform-rhcs-rosa-classic//modules/operator-policies?ref=main"
+  source  = "../terraform-rhcs-rosa-classic/modules/operator-policies"
   # version = "1.6.4"
 
   account_role_prefix = var.cluster_name
@@ -54,7 +55,7 @@ module "operator_policies_classic" {
 module "operator_roles_classic" {
   count = var.hosted_control_plane ? 0 : 1
 
-  source  = "git::https://github.com/andykrohg/terraform-rhcs-rosa-classic//modules/operator-roles?ref=main"
+  source  = "../terraform-rhcs-rosa-classic/modules/operator-roles"
   # version = "1.6.4"
 
   operator_role_prefix = var.cluster_name
@@ -67,8 +68,8 @@ module "operator_roles_classic" {
 module "oidc_config_and_provider_hcp" {
   count = var.hosted_control_plane ? 1 : 0
 
-  source  = "terraform-redhat/rosa-hcp/rhcs//modules/oidc-config-and-provider"
-  version = "1.6.4"
+  source  = "../terraform-rhcs-rosa-classic/modules/oidc-config-and-provider"
+  # version = "1.6.4"
 
   managed = true
   tags    = var.tags
@@ -77,9 +78,10 @@ module "oidc_config_and_provider_hcp" {
 module "operator_roles_hcp" {
   count = var.hosted_control_plane ? 1 : 0
 
-  source  = "terraform-redhat/rosa-hcp/rhcs//modules/operator-roles"
-  version = "1.6.4"
+  source  = "../terraform-rhcs-rosa-classic/modules/operator-roles"
+  # version = "1.6.4"
 
+  account_role_prefix = var.cluster_name
   oidc_endpoint_url    = module.oidc_config_and_provider_hcp[0].oidc_endpoint_url
   operator_role_prefix = var.cluster_name
   tags                 = var.tags
