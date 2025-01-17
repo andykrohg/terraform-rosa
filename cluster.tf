@@ -76,8 +76,8 @@ resource "rhcs_cluster_rosa_classic" "rosa" {
   replicas             = local.autoscaling ? null : coalesce(var.replicas, local.replicas)
 
   # network
-  private            = var.private
-  aws_private_link   = var.private
+  private            = var.govcloud || var.private
+  aws_private_link   = var.govcloud || var.private
   aws_subnet_ids     = local.subnet_ids
   machine_cidr       = var.vpc_cidr
   availability_zones = module.network.private_subnet_azs
